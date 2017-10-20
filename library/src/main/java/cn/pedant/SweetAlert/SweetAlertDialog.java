@@ -34,6 +34,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     private TextView mContentTextView;
     private String mTitleText;
     private String mContentText;
+    private int mTitleVisable;
     private boolean mShowCancel;
     private boolean mShowContent;
     private String mCancelText;
@@ -162,6 +163,8 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
         setCancelText(mCancelText);
         setConfirmText(mConfirmText);
         changeAlertType(mAlertType, true);
+        // 设定标题显示模式
+        setTitleVisibility(mTitleVisable);
 
     }
 
@@ -379,4 +382,20 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener {
     public ProgressHelper getProgressHelper () {
         return mProgressHelper;
     }
+
+    /**
+     * [设定title是否显示]
+     * param visibility
+     *       nvisible:不显示,但保留所占的空间
+     *       gone:不显示,且不保留所占的空间
+     *       visible：正常显示 (默认)
+     **/
+    public void setTitleVisibility(int visibility) {
+        mTitleVisable = visibility;
+        if (mTitleTextView != null) {
+                mTitleTextView.setVisibility(visibility);
+        }
+    }
+
+    public int getmTitleVisable(){ return mTitleVisable;}
 }
